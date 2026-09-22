@@ -27,4 +27,22 @@ npm run dev
 
 The health endpoint is available at <http://localhost:5000/api/health>.
 
-The React client is reserved for Day 3.
+## Day 3: React client
+
+The React client lives in [`client/`](./client/) and includes:
+
+- Vite and Tailwind CSS v4
+- Axios configured to send the authentication cookie
+- Zustand auth state
+- Login, registration, logout, and protected board-list routes
+
+Start the client in a second terminal:
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+Visit <http://localhost:5173>. Start the backend first so registration and
+authentication requests can reach `http://localhost:5000/api`.

@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+@import "tailwindcss";
+
+:root {
+  color: #302f2b;
+  background: #faf9f4;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #faf9f4;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.display-font {
+  font-family: 'Lora', Georgia, serif;
+}
+
+.auth-shell {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(172, 201, 178, 0.28), transparent 28rem),
+    #faf9f4;
+}
+
+.auth-card {
+  border: 1px solid rgba(48, 47, 43, 0.1);
+  background: rgba(255, 255, 252, 0.86);
+  box-shadow: 0 24px 70px rgba(48, 47, 43, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.sage-button {
+  background: #6c8d77;
+  color: #fffdf8;
+  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.sage-button:hover {
+  background: #587764;
+  box-shadow: 0 8px 18px rgba(108, 141, 119, 0.25);
+  transform: translateY(-1px);
+}
+
+.sage-input {
+  border-color: rgba(48, 47, 43, 0.16);
+  background: #fffefb;
+  color: #302f2b;
+}
+
+.sage-input:focus {
+  border-color: #8cad96;
+  box-shadow: 0 0 0 3px rgba(140, 173, 150, 0.2);
+  outline: none;
+}
