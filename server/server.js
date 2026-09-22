@@ -16,7 +16,9 @@ app.use(passport.initialize());
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
 app.use('/api/auth', require('./routes/auth'));
-// app.use('/api/boards', require('./routes/boards'));
+app.use('/api/boards', require('./routes/boards'));
+app.use('/api/columns', require('./routes/columns'));
+app.use('/api/tasks', require('./routes/tasks'));
 
 app.use((err, req, res, next) => {
   console.error(err);
