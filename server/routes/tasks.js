@@ -51,7 +51,10 @@ router.patch('/:id', requireAuth, async (req, res) => {
   const update = {};
   if (columnId !== undefined) update.columnId = columnId;
   if (order !== undefined) update.order = order;
-  if (typeof title === 'string' && title.trim()) update.title = title.trim();
+  if (typeof title === 'string') {
+    if (!title.trim()) return res.status(400).json({ message: 'Title cannot be empty' });
+    update.title = title.trim();
+  }
   if (description !== undefined) update.description = description;
   if (labels !== undefined) update.labels = labels;
 
@@ -71,4 +74,3 @@ router.delete('/:id', requireAuth, async (req, res) => {
 });
 
 module.exports = router;
-

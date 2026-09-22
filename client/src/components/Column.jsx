@@ -1,10 +1,17 @@
 import { useState } from 'react';
-import { useDroppable } from '@dnd-kit/core';
-import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import TaskCard from './TaskCard';
 
-export default function Column({ column, tasks, onAddTask }) {
-  const { setNodeRef, isOver } = useDroppable({
+export default function Column({ column, tasks, onAddTask, onUpdateTask, onDeleteTask, onDeleteColumn }) {
+  const {
+    setNodeRef,
+    attributes,
+    listeners,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
     id: column._id,
     data: { type: 'Column', column },
   });
@@ -21,19 +28,40 @@ export default function Column({ column, tasks, onAddTask }) {
   };
 
   return (
-    <section className="flex w-[20rem] shrink-0 flex-col rounded-[1.5rem] border border-[#e5e4dc] bg-[#f1f2eb] p-4">
+    <section
+      ref={setNodeRef}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.5 : 1,
+      }}
+      className="flex w-[20rem] shrink-0 flex-col rounded-[1.5rem] border border-[#e5e4dc] bg-[#f1f2eb] p-4"
+    >
       <div className="mb-4 flex items-center justify-between px-1">
         <div>
-          <h3 className="text-sm font-semibold text-[#4e6254]">{column.title}</h3>
+          <h3
+            {...attributes}
+            {...listeners}
+            className="cursor-grab text-sm font-semibold text-[#4e6254] active:cursor-grabbing"
+          >
+            {column.title}
+          </h3>
           <p className="mt-1 text-xs text-[#9a988f]">Keep momentum moving</p>
         </div>
         <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-[#e1e9e1] px-2 text-xs font-semibold text-[#6c8d77]">
           {tasks.length}
         </span>
       </div>
-      <div ref={setNodeRef} className={`flex min-h-28 flex-col gap-3 rounded-2xl p-1 transition-colors ${isOver ? 'bg-[#e0ebe2]' : ''}`}>
+      <div className="flex min-h-28 flex-col gap-3 rounded-2xl p-1">
         <SortableContext items={taskIds} strategy={verticalListSortingStrategy}>
-          {tasks.map((task) => <TaskCard key={task._id} task={task} />)}
+          {tasks.map((task) => (
+            <TaskCard
+              key={task._id}
+              task={task}
+              onUpdate={onUpdateTask}
+              onDelete={onDeleteTask}
+            />
+          ))}
         </SortableContext>
         {tasks.length === 0 && <p className="rounded-xl border border-dashed border-[#c9d5cb] px-3 py-5 text-center text-xs text-[#9a988f]">Drop a task here</p>}
       </div>
@@ -49,11 +77,20 @@ export default function Column({ column, tasks, onAddTask }) {
           <button className="sage-button rounded-xl px-3 text-xs font-semibold">Add</button>
         </form>
       )}
-      {!showForm && (
-        <button onClick={() => setShowForm(true)} className="mt-3 rounded-xl px-3 py-2 text-left text-xs font-medium text-[#7d8f81] hover:bg-[#e6ebe3]">
-          + Add task
+      <div className="mt-3 flex items-center justify-between">
+        {!showForm && (
+          <button onClick={() => setShowForm(true)} className="rounded-xl px-3 py-2 text-left text-xs font-medium text-[#7d8f81] hover:bg-[#e6ebe3]">
+            + Add task
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => window.confirm(`Delete "${column.title}" and its tasks?`) && onDeleteColumn(column._id)}
+          className="rounded-xl px-2 py-2 text-xs text-[#a34f38] hover:bg-[#f8e4dc]"
+        >
+          Delete column
         </button>
-      )}
+      </div>
     </section>
   );
 }

@@ -46,3 +46,13 @@ npm run dev
 
 Visit <http://localhost:5173>. Start the backend first so registration and
 authentication requests can reach `http://localhost:5000/api`.
+
+## Day 6: Real-time collaboration
+
+The board uses Socket.io for authenticated, board-scoped real-time updates.
+Task changes are still persisted through the REST API; Socket.io broadcasts
+successful changes to other users in the same board room and resynchronizes
+the board after reconnecting.
+
+Open the same board in two logged-in browser sessions to verify live task
+moves, task creation, presence updates, and reconnect behavior.

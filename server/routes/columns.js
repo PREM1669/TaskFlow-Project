@@ -1,6 +1,7 @@
 const express = require('express');
 const Board = require('../models/Board');
 const Column = require('../models/Column');
+const Task = require('../models/Task');
 const requireAuth = require('../middleware/auth');
 
 const router = express.Router();
@@ -48,13 +49,12 @@ router.delete('/:id', requireAuth, async (req, res) => {
   const board = await getMemberBoard(column.boardId, req.user._id);
   if (!board) return res.status(403).json({ message: 'Forbidden' });
 
-  await column.deleteOne();
-  await Column.updateMany(
-    { boardId: board._id, order: { $gt: column.order } },
-    { $inc: { order: -1 } },
-  );
+  await Promise.all([
+    Task.deleteMany({ columnId: column._id }),
+    column.deleteOne(),
+  ]);
+  await Column.updateMany({ boardId: board._id, order: { $gt: column.order } }, { $inc: { order: -1 } });
   res.json({ message: 'Column deleted' });
 });
 
 module.exports = router;
-
