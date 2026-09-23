@@ -14,6 +14,13 @@ body {
   min-height: 100vh;
   margin: 0;
   background: #faf9f4;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+html.dark,
+html.dark body {
+  background: #17211b;
+  color: #e5e7eb;
 }
 
 button,

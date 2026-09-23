@@ -27,7 +27,7 @@ export default function TaskCard({ task, onUpdate, onDelete }) {
       style={{ transform: CSS.Transform.toString(transform), transition, opacity: isDragging ? 0.45 : 1 }}
       {...attributes}
       {...listeners}
-      className="cursor-grab rounded-2xl border border-[#e5e4dc] bg-white p-4 text-sm text-[#4e4c45] shadow-[0_5px_14px_rgba(48,47,43,0.05)] active:cursor-grabbing"
+      className="cursor-grab rounded-2xl border border-[#e5e4dc] bg-white p-4 text-sm text-[#4e4c45] shadow-[0_5px_14px_rgba(48,47,43,0.05)] active:cursor-grabbing dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
     >
       {editing ? (
         <form onSubmit={save} onPointerDown={(event) => event.stopPropagation()}>

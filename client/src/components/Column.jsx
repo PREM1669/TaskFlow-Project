@@ -35,7 +35,7 @@ export default function Column({ column, tasks, onAddTask, onUpdateTask, onDelet
         transition,
         opacity: isDragging ? 0.5 : 1,
       }}
-      className="flex w-[20rem] shrink-0 flex-col rounded-[1.5rem] border border-[#e5e4dc] bg-[#f1f2eb] p-4"
+      className="flex w-[20rem] shrink-0 flex-col rounded-[1.5rem] border border-[#e5e4dc] bg-[#f1f2eb] p-4 dark:border-slate-700 dark:bg-slate-900"
     >
       <div className="mb-4 flex items-center justify-between px-1">
         <div>

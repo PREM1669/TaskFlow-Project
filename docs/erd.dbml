@@ -1,0 +1,45 @@
+Table users {
+  _id objectId [pk]
+  name string
+  email string [unique]
+  passwordHash string
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table boards {
+  _id objectId [pk]
+  title string
+  ownerId objectId [not null]
+  memberIds objectId[]
+  inviteToken string [unique, note: 'sparse']
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table columns {
+  _id objectId [pk]
+  boardId objectId [not null, indexed]
+  title string
+  order number
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table tasks {
+  _id objectId [pk]
+  boardId objectId [not null, indexed]
+  columnId objectId [not null, indexed]
+  title string
+  description string
+  labels string[]
+  order number
+  createdAt datetime
+  updatedAt datetime
+}
+
+Ref: boards.ownerId > users._id
+Ref: boards.memberIds > users._id
+Ref: columns.boardId > boards._id
+Ref: tasks.boardId > boards._id
+Ref: tasks.columnId > columns._id

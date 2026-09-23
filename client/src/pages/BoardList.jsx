@@ -34,11 +34,11 @@ export default function BoardList() {
   return (
     <div className="flex">
       <Sidebar />
-      <main className="min-h-screen flex-1 bg-[#faf9f4] p-8 sm:p-12">
+      <main className="min-h-screen flex-1 bg-[#faf9f4] p-8 pt-20 sm:p-12 sm:pt-12 dark:bg-slate-950">
         <div className="mb-6 flex items-center justify-between">
           <div>
             <p className="mb-2 text-sm font-medium uppercase tracking-[0.18em] text-[#6c8d77]">Workspace</p>
-            <h1 className="display-font text-4xl font-medium text-[#302f2b]">My Boards</h1>
+            <h1 className="display-font text-4xl font-medium text-[#302f2b] dark:text-slate-100">My Boards</h1>
           </div>
           <button onClick={() => setShowModal(true)} className="sage-button rounded-full px-5 py-3 text-sm font-semibold">
             + New Board

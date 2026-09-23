@@ -72,14 +72,14 @@ export default function BoardView() {
         onDismiss={dismissAlert}
       />
       <Sidebar />
-      <main className="min-w-0 flex-1">
+      <main className="min-w-0 flex-1 bg-[#faf9f4] pt-16 dark:bg-slate-950 sm:pt-0">
         <header className="px-8 pb-6 pt-10 sm:px-12">
           <Link to="/boards" className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.16em] text-[#7d8f81] hover:text-[#587764]">
             ← All boards
           </Link>
           <p className="mb-2 text-sm font-medium uppercase tracking-[0.18em] text-[#6c8d77]">Project workspace</p>
           <div className="flex items-end justify-between gap-6">
-            <h1 className="display-font text-4xl font-medium text-[#302f2b]">{currentBoard.title}</h1>
+            <h1 className="display-font text-4xl font-medium text-[#302f2b] dark:text-slate-100">{currentBoard.title}</h1>
             <PresenceIndicator activeUsers={activeUsers} />
           </div>
         </header>
