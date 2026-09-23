@@ -57,9 +57,9 @@ export default function BoardView() {
     onReconnect: () => fetchBoard(id),
   });
 
-  if (loading) return <div className="p-8 text-[#8b897f]">Loading board...</div>;
-  if (error) return <div className="p-8 text-[#a34f38]">{error}</div>;
-  if (!currentBoard) return <div className="p-8 text-[#8b897f]">Board not found.</div>;
+  if (loading) return <div className="min-h-screen bg-[#faf9f4] p-8 text-[#8b897f] dark:bg-slate-950 dark:text-slate-400">Loading board...</div>;
+  if (error) return <div className="min-h-screen bg-[#faf9f4] p-8 text-[#a34f38] dark:bg-slate-950 dark:text-red-300">{error}</div>;
+  if (!currentBoard) return <div className="min-h-screen bg-[#faf9f4] p-8 text-[#8b897f] dark:bg-slate-950 dark:text-slate-400">Board not found.</div>;
 
   const dismissAlert = (alertId) => {
     setAlerts((currentAlerts) => currentAlerts.filter((alert) => alert.id !== alertId));
@@ -74,7 +74,7 @@ export default function BoardView() {
       <Sidebar />
       <main className="min-w-0 flex-1 bg-[#faf9f4] pt-16 dark:bg-slate-950 sm:pt-0">
         <header className="px-8 pb-6 pt-10 sm:px-12">
-          <Link to="/boards" className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.16em] text-[#7d8f81] hover:text-[#587764]">
+          <Link to="/boards" className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.16em] text-[#7d8f81] hover:text-[#587764] dark:text-slate-400 dark:hover:text-emerald-300">
             ← All boards
           </Link>
           <p className="mb-2 text-sm font-medium uppercase tracking-[0.18em] text-[#6c8d77]">Project workspace</p>

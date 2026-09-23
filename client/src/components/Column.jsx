@@ -42,13 +42,13 @@ export default function Column({ column, tasks, onAddTask, onUpdateTask, onDelet
           <h3
             {...attributes}
             {...listeners}
-            className="cursor-grab text-sm font-semibold text-[#4e6254] active:cursor-grabbing"
+            className="cursor-grab text-sm font-semibold text-[#4e6254] active:cursor-grabbing dark:text-slate-200"
           >
             {column.title}
           </h3>
-          <p className="mt-1 text-xs text-[#9a988f]">Keep momentum moving</p>
+          <p className="mt-1 text-xs text-[#9a988f] dark:text-slate-400">Keep momentum moving</p>
         </div>
-        <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-[#e1e9e1] px-2 text-xs font-semibold text-[#6c8d77]">
+        <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-[#e1e9e1] px-2 text-xs font-semibold text-[#6c8d77] dark:bg-slate-800 dark:text-emerald-300">
           {tasks.length}
         </span>
       </div>
@@ -63,7 +63,7 @@ export default function Column({ column, tasks, onAddTask, onUpdateTask, onDelet
             />
           ))}
         </SortableContext>
-        {tasks.length === 0 && <p className="rounded-xl border border-dashed border-[#c9d5cb] px-3 py-5 text-center text-xs text-[#9a988f]">Drop a task here</p>}
+        {tasks.length === 0 && <p className="rounded-xl border border-dashed border-[#c9d5cb] px-3 py-5 text-center text-xs text-[#9a988f] dark:border-slate-700 dark:text-slate-400">Drop a task here</p>}
       </div>
       {showForm && (
         <form onSubmit={handleSubmit} className="mt-3 flex gap-2">
@@ -79,14 +79,14 @@ export default function Column({ column, tasks, onAddTask, onUpdateTask, onDelet
       )}
       <div className="mt-3 flex items-center justify-between">
         {!showForm && (
-          <button onClick={() => setShowForm(true)} className="rounded-xl px-3 py-2 text-left text-xs font-medium text-[#7d8f81] hover:bg-[#e6ebe3]">
+          <button onClick={() => setShowForm(true)} className="rounded-xl px-3 py-2 text-left text-xs font-medium text-[#7d8f81] hover:bg-[#e6ebe3] dark:text-emerald-300 dark:hover:bg-slate-800">
             + Add task
           </button>
         )}
         <button
           type="button"
           onClick={() => window.confirm(`Delete "${column.title}" and its tasks?`) && onDeleteColumn(column._id)}
-          className="rounded-xl px-2 py-2 text-xs text-[#a34f38] hover:bg-[#f8e4dc]"
+          className="rounded-xl px-2 py-2 text-xs text-[#a34f38] hover:bg-[#f8e4dc] dark:text-red-300 dark:hover:bg-red-950"
         >
           Delete column
         </button>

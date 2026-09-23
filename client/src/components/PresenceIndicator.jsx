@@ -6,14 +6,14 @@ export default function PresenceIndicator({ activeUsers }) {
           <div
             key={user.id}
             title={user.name}
-            className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#faf9f4] bg-[#6c8d77] text-xs font-semibold text-white"
+            className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#faf9f4] bg-[#6c8d77] text-xs font-semibold text-white dark:border-slate-950"
           >
             {user.name?.[0]?.toUpperCase()}
           </div>
         ))}
       </div>
       {activeUsers.length > 0 && (
-        <span className="text-xs text-[#8b897f]">
+        <span className="text-xs text-[#8b897f] dark:text-slate-400">
           {activeUsers.length} collaborator{activeUsers.length === 1 ? '' : 's'} online
         </span>
       )}

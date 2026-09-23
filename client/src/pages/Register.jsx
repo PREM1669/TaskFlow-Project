@@ -28,11 +28,11 @@ export default function Register() {
       <form onSubmit={handleSubmit} className="auth-card w-full max-w-md rounded-[2rem] p-8 sm:p-10">
         <div className="mb-8 flex items-center gap-3">
           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#a9c7b0] text-lg font-semibold text-white">T</span>
-          <span className="text-lg font-semibold tracking-tight text-[#302f2b]">TaskFlow</span>
+          <span className="text-lg font-semibold tracking-tight text-[#302f2b] dark:text-slate-100">TaskFlow</span>
         </div>
         <p className="mb-2 text-sm font-medium uppercase tracking-[0.18em] text-[#6c8d77]">Get started</p>
-        <h1 className="display-font mb-3 text-4xl font-medium leading-tight text-[#302f2b]">Make room for good work.</h1>
-        <p className="mb-8 text-sm leading-6 text-[#77756d]">Create your account and bring every project into one calm workspace.</p>
+        <h1 className="display-font mb-3 text-4xl font-medium leading-tight text-[#302f2b] dark:text-slate-100">Make room for good work.</h1>
+        <p className="mb-8 text-sm leading-6 text-[#77756d] dark:text-slate-300">Create your account and bring every project into one calm workspace.</p>
         {error && <p className="mb-4 rounded-xl bg-[#f8e4dc] px-3 py-2 text-sm text-[#a34f38]">{error}</p>}
         <input name="name" placeholder="Name" onChange={handleChange}
           className="sage-input mb-3 w-full rounded-xl border px-4 py-3" required />
@@ -43,8 +43,8 @@ export default function Register() {
         <button className="sage-button w-full rounded-full py-3 font-semibold">
           Register
         </button>
-        <p className="mt-6 text-center text-sm text-[#77756d]">
-          Already have an account? <Link to="/login" className="font-semibold text-[#587764] hover:underline">Log in</Link>
+        <p className="mt-6 text-center text-sm text-[#77756d] dark:text-slate-400">
+          Already have an account? <Link to="/login" className="font-semibold text-[#587764] hover:underline dark:text-emerald-300">Log in</Link>
         </p>
       </form>
     </div>

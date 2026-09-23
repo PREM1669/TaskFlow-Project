@@ -117,7 +117,7 @@ export default function Board({ boardId, columns, tasks }) {
               />
             ))}
         </SortableContext>
-        <button onClick={handleCreateColumn} className="h-fit w-[20rem] shrink-0 rounded-[1.5rem] border border-dashed border-[#c9d5cb] p-8 text-sm font-semibold text-[#6c8d77] hover:bg-[#eef3ed]">
+        <button onClick={handleCreateColumn} className="h-fit w-[20rem] shrink-0 rounded-[1.5rem] border border-dashed border-[#c9d5cb] p-8 text-sm font-semibold text-[#6c8d77] hover:bg-[#eef3ed] dark:border-slate-700 dark:text-emerald-300 dark:hover:bg-slate-800">
           + Add column
         </button>
       </div>

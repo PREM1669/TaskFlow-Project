@@ -8,7 +8,12 @@ export default function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'));
+  const [dark, setDark] = useState(() => {
+    const savedTheme = window.localStorage.getItem('taskflow-theme');
+    return savedTheme
+      ? savedTheme === 'dark'
+      : document.documentElement.classList.contains('dark');
+  });
 
   const handleLogout = async () => {
     await logout();
@@ -16,8 +21,10 @@ export default function Sidebar() {
   };
 
   const toggleDark = () => {
-    document.documentElement.classList.toggle('dark');
-    setDark(document.documentElement.classList.contains('dark'));
+    const nextDark = !dark;
+    document.documentElement.classList.toggle('dark', nextDark);
+    window.localStorage.setItem('taskflow-theme', nextDark ? 'dark' : 'light');
+    setDark(nextDark);
   };
 
   return (

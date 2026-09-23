@@ -38,19 +38,19 @@ export default function TaskCard({ task, onUpdate, onDelete }) {
             className="sage-input mb-2 w-full rounded-lg border px-2 py-1 text-sm"
           />
           <div className="flex gap-2 text-xs">
-            <button className="font-semibold text-[#587764]">Save</button>
-            <button type="button" onClick={() => setEditing(false)} className="text-[#8b897f]">Cancel</button>
+            <button className="font-semibold text-[#587764] dark:text-emerald-300">Save</button>
+            <button type="button" onClick={() => setEditing(false)} className="text-[#8b897f] dark:text-slate-400">Cancel</button>
           </div>
         </form>
       ) : (
         <div className="flex items-start justify-between gap-3">
           <span>{task.title}</span>
           <span className="flex shrink-0 gap-1" onPointerDown={(event) => event.stopPropagation()}>
-            <button type="button" onClick={() => setEditing(true)} className="text-xs text-[#6c8d77] hover:underline">Edit</button>
+            <button type="button" onClick={() => setEditing(true)} className="text-xs text-[#6c8d77] hover:underline dark:text-emerald-300">Edit</button>
             <button
               type="button"
               onClick={() => window.confirm('Delete this task?') && onDelete?.(task._id)}
-              className="text-xs text-[#a34f38] hover:underline"
+              className="text-xs text-[#a34f38] hover:underline dark:text-red-300"
             >
               Delete
             </button>

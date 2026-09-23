@@ -1,7 +1,7 @@
 function alertTone(action) {
-  if (action?.includes('deleted')) return 'border-[#e7b8a8] bg-[#fff4ef]';
-  if (action === 'presence') return 'border-[#c9dcca] bg-[#f1f8f1]';
-  return 'border-[#d6dfd7] bg-white';
+  if (action?.includes('deleted')) return 'border-[#e7b8a8] bg-[#fff4ef] dark:border-red-900 dark:bg-red-950';
+  if (action === 'presence') return 'border-[#c9dcca] bg-[#f1f8f1] dark:border-emerald-900 dark:bg-emerald-950';
+  return 'border-[#d6dfd7] bg-white dark:border-slate-700 dark:bg-slate-900';
 }
 
 export default function ActivityAlerts({ alerts, onDismiss }) {
@@ -15,11 +15,11 @@ export default function ActivityAlerts({ alerts, onDismiss }) {
         >
           <div className="flex items-start gap-3">
             <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#6c8d77]" />
-            <p className="flex-1 text-sm leading-5 text-[#4e4c45]">{alert.message}</p>
+            <p className="flex-1 text-sm leading-5 text-[#4e4c45] dark:text-slate-200">{alert.message}</p>
             <button
               type="button"
               onClick={() => onDismiss(alert.id)}
-              className="text-xs text-[#8b897f] hover:text-[#302f2b]"
+              className="text-xs text-[#8b897f] hover:text-[#302f2b] dark:text-slate-400 dark:hover:text-white"
               aria-label="Dismiss notification"
             >
               ×
